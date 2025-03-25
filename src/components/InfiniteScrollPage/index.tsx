@@ -5,6 +5,7 @@ import carouselStyles from "../Carousel/carousel.module.css";
 import { useInfiniteGames } from "@/utility/hooks/useInfiniteSearchGames";
 import InfinitScrollContainer from "../InfinitScrollContainer.tsx/index";
 import { isEmpty } from "lodash";
+import NoDataComponent from "../NoDataComponent.tsx";
 
 
 const INLINE_STYLE_FOR_GAME_CARD = {
@@ -39,6 +40,12 @@ const InfiniteScrollPage = ({ params }: { params: any }) => {
       </div>
     );
   }
+  
+  if (isEmpty(searchData)) {
+    return (
+      <NoDataComponent />
+    )
+  }
 
   return (
     <div>
@@ -50,13 +57,11 @@ const InfiniteScrollPage = ({ params }: { params: any }) => {
           }
         }}
       >
-        {isEmpty(searchData) ? (
-          <div className={styles.noData}>No data found</div>
-        ) : (
+        {
           searchData?.map((item: any, index: number) => (
             <GameCard key={item?.thumbnail || index} data={item} />
           ))
-        )}
+          }
       </InfinitScrollContainer>
       {isFetchingNextPage && (
         <div style={INLINE_STYLE_FOR_GAME_CARD}>

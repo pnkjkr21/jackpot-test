@@ -1,7 +1,7 @@
 'use client'
 import * as React from 'react';
 import Image from 'next/image';
-import logo from "@/components/jackpot-logo.png"
+import logo from "@/assets/images/jackpot-logo.png"
 import JackpotOriginalIcon from '@/components/Icons/jackpot-original-icon';
 import PrimaryButton from '@/components/PrimaryButton';
 import IconButton from '@/components/icon-button';

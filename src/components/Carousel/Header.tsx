@@ -4,21 +4,15 @@ import RightArrow from '../Icons/right-arrow'
 import LeftArrow from '../Icons/left-arrow'
 import { usePathname, useRouter } from 'next/navigation'
 
-function Header({ handleScrollLeft, handleScrollRight, isLeftButtonDisabled, isRightButtonDisabled, title, Icon, id }: { 
+function Header({ handleScrollLeft, handleScrollRight, isLeftButtonDisabled, isRightButtonDisabled, title, Icon, viewAll }: { 
   handleScrollLeft: () => void, 
   handleScrollRight: () => void, 
   isLeftButtonDisabled: boolean, 
   isRightButtonDisabled: boolean, 
-  title: string, 
-  id: string
+  title: string,
   Icon?: React.ComponentType 
+  viewAll: () => void,
 }) {
-    const router = useRouter()
-    const pathname = usePathname()
-    
-    const viewAll = () => {
-        router.push(`${pathname}?category=${id}`)
-    }
   return (
     <div className={styles.carouselHeader}>
         <div className={styles.carouselHeaderTitleContainer} onClick={viewAll}>

@@ -45,7 +45,7 @@
 }
 .carouselHeaderButton:disabled {
     opacity: 0.5;
-    cursor: not-allowed;
+    cursor: default;
 }
 .carouselHeaderButton:disabled:hover {
     background-color: #3E374E;
@@ -166,17 +166,7 @@
     .carouselContainer {
         padding: 0 5px;
         gap: 10px;
-        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
     }
-
-    /* .gameCardWrapper {
-        width: 140px;
-        transform: translateY(0); 
-    } */
-
-    /* .gameCardWrapper:hover {
-        transform: translateY(0);
-    } */
 }
 
 /* Small mobile styles */

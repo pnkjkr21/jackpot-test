@@ -1,0 +1,43 @@
+.viewAllCard {
+    border-radius: 10px;
+    height: 227px;
+    width: 100%;
+    transition: all 0.3s ease;
+    aspect-ratio: 171/227;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid #7658ED;
+    background-color: rgb(62, 75, 80);
+  }
+  
+  .viewAllCard:hover {
+    cursor: pointer;
+    transform: translateY(-2px);
+    z-index: 10;
+  }
+  
+  /* Tablet styles */
+  @media screen and (max-width: 1024px) {
+    .viewAllCard {
+      aspect-ratio: 150/200;
+    }
+  }
+  
+  /* Mobile styles */
+  @media screen and (max-width: 768px) {
+    .viewAllCard {
+      aspect-ratio: 130/180;
+    }
+  }
+  
+  /* Small mobile styles */
+  @media screen and (max-width: 480px) {
+    .viewAllCard {
+      aspect-ratio: 165/221;
+    }
+  } 

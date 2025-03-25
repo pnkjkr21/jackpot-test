@@ -17,7 +17,7 @@ export const SECTIONS = [
         title: 'Featured Games',
         params: {
             sort: 'featuredPriority',
-            limit: 12,
+            limit: 13,
         },
         Icon: FeaturedGamesIcon
     },
@@ -26,7 +26,7 @@ export const SECTIONS = [
         title: 'Jackpot Originals',
         params: {
             vendor: 'JackpotOriginal',
-            limit: 12,
+            limit: 13,
         },
         Icon: JackpotOriginalIcon
     },
@@ -35,7 +35,7 @@ export const SECTIONS = [
         title: 'Slots',
         params: {
             category: 'VIDEOSLOTS',
-            limit: 12,
+            limit: 13,
         },
         Icon: SlotsIcon
     },
@@ -44,7 +44,7 @@ export const SECTIONS = [
         title: 'Table Games',
         params: {
             category: 'TABLEGAMES',
-            limit: 12,
+            limit: 13,
         },
         Icon: TableGamesIcon
     },
@@ -53,7 +53,7 @@ export const SECTIONS = [
         title: 'Game Shows',
         params: {
             category: 'GAMESHOWS',
-            limit: 12,
+            limit: 13,
         },
         Icon: GameShowsIcon
     },
@@ -62,7 +62,7 @@ export const SECTIONS = [
         title: 'New Games',
         params: {
             sort: 'createdAt',
-            limit: 12,
+            limit: 13,
         },
         Icon: NewGamesIcon
     },

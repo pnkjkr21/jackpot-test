@@ -1,9 +1,11 @@
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import GameCard from "../GameCard";
 import Header from "./Header";
 import styles from "./carousel.module.css";
 import useCasinos from "@/utility/hooks/useCasinos";
 import { isEmpty } from "lodash";
+import ViewAllCard from "../ViewAllCard";
+import { usePathname, useRouter } from "next/navigation";
 
 
 const CarouselComponent = ({
@@ -17,9 +19,43 @@ const CarouselComponent = ({
   Icon: React.ComponentType;
   id: string;
 }) => {
+  
+  const router = useRouter()
+  const pathname = usePathname()
+  
+  const viewAll = () => {
+      router.push(`${pathname}?category=${id}`)
+  }
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const { data, isLoading: useCasinosLoading } = useCasinos(params);
   const { items = [] } = data?.data || {}
+
+  const [isLeftButtonDisabled, setIsLeftButtonDisabled] = useState(true);
+  const [isRightButtonDisabled, setIsRightButtonDisabled] = useState(false);
+
+  useEffect(() => {
+    const updateButtonStates = () => {
+      if (scrollContainerRef.current) {
+        setIsLeftButtonDisabled(scrollContainerRef.current.scrollLeft === 0);
+        setIsRightButtonDisabled(
+          scrollContainerRef.current.scrollLeft + scrollContainerRef.current.clientWidth >= scrollContainerRef.current.scrollWidth
+        );
+      }
+    };
+
+    const container = scrollContainerRef.current;
+    if (container) {
+      container.addEventListener('scroll', updateButtonStates);
+      // Initial check
+      updateButtonStates();
+    }
+
+    return () => {
+      if (container) {
+        container.removeEventListener('scroll', updateButtonStates);
+      }
+    };
+  }, []);
 
   //implement two buttons to scroll left and right such than on clicking right it will take me to last set of items and on clicking left it will take me to first set of items
   const handleScrollRight = () => {
@@ -32,10 +68,6 @@ const CarouselComponent = ({
       scrollContainerRef.current.scrollLeft = 0; // Adjust the amount to scroll
     }
   };
-  const isLeftButtonDisabled =
-    scrollContainerRef.current?.scrollLeft === 0 && false;
-  const isRightButtonDisabled =
-    scrollContainerRef.current?.scrollLeft === (items?.length - 1) * (200 + 16);
 
   return (
     <div>
@@ -46,7 +78,7 @@ const CarouselComponent = ({
         isRightButtonDisabled={isRightButtonDisabled}
         title={title}
         Icon={Icon}
-        id={id}
+        viewAll={viewAll}
       />
       <div
         ref={scrollContainerRef}
@@ -65,11 +97,19 @@ const CarouselComponent = ({
           <>
             {/* Show actual cards */}
             {!isEmpty(items) ? (
-              items?.map((item: any) => (
+              <>
+              {items?.slice(0, 12).map((item: any) => (
                 <div key={item?.thumbnail} className={styles.gameCardWrapper}>
                   <GameCard data={item} />
                 </div>
-              ))
+              ))}
+              {
+                items?.length > 12 && 
+                  <div className={styles.gameCardWrapper} onClick={viewAll}>
+                    <ViewAllCard />
+                  </div>
+              }
+              </>
             ) : (
               <>
                 <div className={styles.noData}>No data found</div>
