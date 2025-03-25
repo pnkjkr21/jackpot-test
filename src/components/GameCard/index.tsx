@@ -12,7 +12,7 @@ function GameCard({ data }: { data: any }) {
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
-        borderWidth: "1px",
+        borderWidth: "3px",
         borderStyle: "solid",
         borderColor: data.borderColor,
       }}
