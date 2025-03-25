@@ -37,8 +37,6 @@ const useCasinos = (params:any = {}) => {
     params.order,
     params.excludeCategory,
   ]);
-  
-  console.log(queryKey)
 
   return useQuery({
     queryKey,

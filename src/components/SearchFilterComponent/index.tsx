@@ -6,14 +6,10 @@ import GameCard from "../GameCard";
 import styles from "../InfiniteScrollPage/infinite-scroll-page.module.css";
 
 const SearchFilterComponent = () => {
-  const { searchQuery, setSearchedGames } = useSearchStore();
+  const { searchQuery } = useSearchStore();
   const [debouncedSearchQuery] = useDebounce(searchQuery, 500);
   const { data, isLoading, isError } = useSearchGames(debouncedSearchQuery);
   const { items } = data?.data || [];
-
-  useEffect(() => {
-    setSearchedGames(items ?? []);
-  }, [data]);
 
   return (
     <div className={styles.container}>

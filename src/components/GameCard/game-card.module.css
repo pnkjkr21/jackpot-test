@@ -1,31 +1,37 @@
 .gameCard {
   border-radius: 10px;
   height: 227px;
-  width: 171px;
+  width: 100%;
   transition: all 0.3s ease;
+  aspect-ratio: 171/227;
+  position: relative;
+  z-index: 1;
+}
+
+.gameCard:hover {
+  transform: translateY(-2px);
+  z-index: 10;
+  cursor: pointer;
 }
 
 /* Tablet styles */
 @media screen and (max-width: 1024px) {
   .gameCard {
-    height: 200px;
-    width: 150px;
+    aspect-ratio: 150/200;
   }
 }
 
 /* Mobile styles */
 @media screen and (max-width: 768px) {
   .gameCard {
-    height: 180px;
-    width: 130px;
+    aspect-ratio: 130/180;
   }
 }
 
 /* Small mobile styles */
 @media screen and (max-width: 480px) {
   .gameCard {
-    height: 221px;
-    width: 165px;
+    aspect-ratio: 165/221;
   }
 } 
 

@@ -7,6 +7,7 @@
     justify-content: space-between;
     display: flex;
     align-items: center;
+    padding: 0 10px;
 }
 .carouselHeaderActionContainer {
     display: flex;
@@ -14,32 +15,84 @@
     justify-content: space-between;
     gap: 10px;
 }
+.carouselHeaderTitle {
+    font-size: 24px;
+    font-weight: 600;
+    color: #EAE6F5;
+}
 .carouselHeaderButton {
     font-size: 16px;
     font-weight: 600;
     color: #EAE6F5;
     text-align: center;
     background-color: #3E374E;
-    padding: 10px;
+    padding: 10px 20px;
     border-radius: 5px;
     border: 1px solid transparent;
     cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.3s ease;
 }
 .carouselHeaderButton:hover {
-    border: 1px solid #EAE6F5;
+    color: white;
+    background-color: #7658ED;
+}
+.carouselHeaderButton:hover svg {
+    color: white;
+}
+.carouselHeaderButton:hover svg path {
+    fill: white;
+}
+.carouselHeaderButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+.carouselHeaderButton:disabled:hover {
+    background-color: #3E374E;
+    color: #EAE6F5;
+}
+.carouselHeaderButton:disabled:hover svg {
+    color: #EAE6F5;
+}
+.carouselHeaderButton:disabled:hover svg path {
+    fill: #EAE6F5;
 }
 .carouselHeaderTitleContainer {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
+    padding: 10px;
+}
+.carouselHeaderTitleContainer:hover {
+    cursor: pointer;
+    background-color: #7658ED;
+    color: white;
+    border-radius: 5px;
+}
+.carouselHeaderTitleContainer:hover svg {
+    color: white;
+}
+.carouselHeaderTitleContainer:hover svg path {
+    fill: white;
+}
+.carouselHeaderTitleContainer:hover .carouselHeaderTitle {
+    color: white;
+}
+/* make the container size flexible for different size screen */
+@media screen and (max-width: 1024px) {
+    .carouselContainer {
+        gap: 10px; /* Increased gap for more space between images */
+    }
 }
 .carouselContainer {
     display: flex;
     justify-content: space-between;
-    gap: 10px;
+    gap: 10px; /* Increased gap for more space between images */
     overflow-x: auto;
+    margin-top: 2px;
     scroll-behavior: smooth;
+    box-sizing: border-box;
     -webkit-overflow-scrolling: none;
 }
 
@@ -54,18 +107,9 @@
 }
   
 .gameCardWrapper {
-    flex: 0 0 auto;
-    width: 171px;
-    position: relative;
-    z-index: 1;
-    transition: transform 0.3s ease, opacity 0.3s ease;
+    margin-top: 2px; 
 } 
-.gameCardWrapper:hover {
-    transform: translateY(-2px);
-    z-index: 2;
-    cursor: pointer;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-}
+
 .carouselContainer::-webkit-scrollbar {
     display: none; /* Hide the scrollbar */
 }
@@ -80,63 +124,91 @@
     border-radius: 6px;
 }
   
-/* Mobile Responsive Styles */
-@media screen and (max-width: 768px) {
-    .carouselContainer {
-        padding: 0 5px;
-        gap: 8px;
-        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
-    }
-
-    .gameCardWrapper {
-        width: 140px;
-        transform: translateY(0); /* Reset hover transform on mobile */
-    }
-
-    .gameCardWrapper:hover {
-        transform: translateY(0); /* Disable hover effect on mobile */
-    }
-
+/* Tablet styles */
+@media screen and (max-width: 1024px) {
     .carouselHeader {
         font-size: 20px;
         margin-bottom: 15px;
-        padding: 0 5px;
+        padding: 0 8px;
+    }
+
+    .carouselHeaderTitle {
+        font-size: 20px;
     }
 
     .carouselHeaderButton {
-        padding: 8px;
         font-size: 14px;
-        min-width: 40px; /* Ensure buttons are touch-friendly */
-        min-height: 40px;
-    }
-
-    .carouselHeaderButtonContainer {
-        gap: 5px;
+        padding: 8px 16px;
     }
 }
 
-@media screen and (max-width: 480px) {
-    .carouselContainer {
-        padding: 0 5px;
-        gap: 4px;
-        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
-    }
-    
-    .gameCardWrapper {
-        width: 120px;
-    }
-
+/* Mobile styles */
+@media screen and (max-width: 768px) {
     .carouselHeader {
         font-size: 18px;
         margin-bottom: 12px;
+        padding: 0 6px;
+    }
+
+    .carouselHeaderTitle {
+        font-size: 18px;
     }
 
     .carouselHeaderButton {
-        padding: 6px;
         font-size: 12px;
-        min-width: 36px;
-        min-height: 36px;
+        padding: 6px 12px;
     }
+
+    .carouselHeaderActionContainer {
+        gap: 6px;
+    }
+
+    .carouselContainer {
+        padding: 0 5px;
+        gap: 10px;
+        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    }
+
+    /* .gameCardWrapper {
+        width: 140px;
+        transform: translateY(0); 
+    } */
+
+    /* .gameCardWrapper:hover {
+        transform: translateY(0);
+    } */
+}
+
+/* Small mobile styles */
+@media screen and (max-width: 480px) {
+    .carouselHeader {
+        font-size: 16px;
+        margin-bottom: 10px;
+        padding: 0 4px;
+    }
+
+    .carouselHeaderTitle {
+        font-size: 16px;
+    }
+
+    .carouselHeaderButton {
+        font-size: 11px;
+        padding: 5px 10px;
+    }
+
+    .carouselHeaderActionContainer {
+        gap: 4px;
+    }
+
+    .carouselContainer {
+        padding: 0 5px;
+        gap: 10px;
+        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    }
+
+    /* .gameCardWrapper {
+        width: 120px;
+    } */
 }
   
 @keyframes shimmer {

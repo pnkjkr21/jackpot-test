@@ -6,22 +6,29 @@ const queryKey: QueryKey = ["games"];
 interface UseInfiniteGamesOptions {
   limit?: number;
   category?: string;
-  vendor?: string;
+  vendor?: string[];
+  sort?: string;
+  order?: 'asc' | 'desc';
 }
 
 export function useInfiniteGames({ 
   limit = 50, 
   category, 
-  vendor 
+  vendor,
+  sort,
+  order
 }: UseInfiniteGamesOptions = {}) {
+    const vedorParams = vendor ? vendor.join(',') : '';
   return useInfiniteQuery({
-    queryKey: [...queryKey, { category, vendor, limit }], // Unique key per filter
+    queryKey: [...queryKey, { category, vendor, limit, sort, order }], // Unique key per filter
     queryFn: ({ pageParam = 0 }) => {
       return fetchGames({ 
         offset: pageParam * limit, // Start from 0
         limit,
         category,
-        vendor,
+        vendor: vedorParams,
+        sort,
+        order
       });
     },
     initialPageParam: 0,

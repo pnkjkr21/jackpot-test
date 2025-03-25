@@ -67,8 +67,9 @@ main, body, html {
 }
 
 .primary-button:hover {
-  background-color: #371e64;
+  background-color: #FFD700;
   cursor: pointer;
+  color: black
 }
 
 .icon-button {
@@ -95,7 +96,7 @@ main, body, html {
 }
 
 .root-style {
-  margin: 0px 129px;
+  margin: 0px 10%;
 }
 
 .input-container {
@@ -163,6 +164,7 @@ main, body, html {
 .icon-button:hover, .login-button:hover {
   background-color: #332E42;
   cursor: pointer;
+  border: 2px solid #7658ED;
 }
 
 @media screen and (max-width: 480px) {

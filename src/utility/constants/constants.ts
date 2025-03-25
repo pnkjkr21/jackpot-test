@@ -11,7 +11,7 @@ export const baseUrl = 'https://jpapi-staging.jackpot.bet'
 export const EMPTY_GAME_IMAGE = 'https://cdn.prod.website-files.com/5d4bc52e7ec3666956bd3bf1/64f8600dac4d6ff134531794_thumbnail.webp'
 
 
-export const sections = [
+export const SECTIONS = [
     {
         id: 'featured',
         title: 'Featured Games',
@@ -70,7 +70,7 @@ export const sections = [
     
 ]
 
-export const actionButtons = [
+export const ACTION_BUTTONS = [
     {
         id: 'jackpotOriginals',
         title: 'Jackpot Originals',
@@ -102,45 +102,68 @@ export const actionButtons = [
     
 ]
 
-export const paramsForActionButtons = {
+export const PARAMS_FOR_ACTION_BUTTONS = {
     jackpotOriginals: {
         vendor: 'JackpotOriginal',
-        limit: 50,
+        limit: 48,
         sort: 'popularity',
         order: 'desc',
     },
     newGames: {
         sort: 'createdAt',
         order: 'desc',
-        limit: 50,
+        limit: 48,
     },
     slots: {
         category: 'VIDEOSLOTS',
         sort: 'popularity',
         order: 'desc',
-        limit: 50,
+        limit: 48,
     },
     tableGames: {
         category: 'TABLEGAMES',
         sort: 'popularity',
         order: 'desc',
-        limit: 50,
+        limit: 48,
     },
     gameshows: {
         category: 'GAMESHOWS',
         sort: 'popularity',
         order: 'desc',
-        limit: 50,
+        limit: 48,
     },
     liveDealers: {
-        category: 'GAMESHOWSLIVEDEALER',
+        category: 'LIVEDEALER',
         sort: 'popularity',
         order: 'desc',
-        limit: 50,
+        limit: 48,
     },
     featured: {
         sort: 'featuredPriority',
         order: 'desc',
-        limit: 50,
+        limit: 48,
     },
 }
+//PragmaticPlay, EvolutionGaming, JackpotOriginal, Play'nGo, RelaxGaming.
+export const VENDORS = [
+    {
+        id: 'PragmaticPlay',
+        title: 'Pragmatic Play',
+    },
+    {
+        id: 'EvolutionGaming',
+        title: 'Evolution Gaming',
+    },
+    {
+        id: 'JackpotOriginal',
+        title: 'Jackpot Original',
+    },
+    {
+        id: 'PlaynGo',
+        title: 'PlaynGo',
+    },
+    {
+        id: 'RelaxGaming',
+        title: 'Relax Gaming',
+    },
+]
