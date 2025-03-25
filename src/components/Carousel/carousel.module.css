@@ -1,0 +1,189 @@
+.carouselHeader {
+    font-size: 24px;
+    font-weight: 600;
+    color: #EAE6F5;
+    margin-bottom: 20px;
+    text-align: center;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+}
+.carouselHeaderActionContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+.carouselHeaderButton {
+    font-size: 16px;
+    font-weight: 600;
+    color: #EAE6F5;
+    text-align: center;
+    background-color: #3E374E;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid transparent;
+    cursor: pointer;
+}
+.carouselHeaderButton:hover {
+    border: 1px solid #EAE6F5;
+}
+.carouselHeaderTitleContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.carouselContainer {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: none;
+}
+
+.no-shadow {
+    box-shadow: none;
+}
+
+/* Shadow when scrolled */
+
+.withShadow {
+    box-shadow: 50px 20px 10px rgba(0.5, 0.5, 0.5, 0.2);
+}
+  
+.gameCardWrapper {
+    flex: 0 0 auto;
+    width: 171px;
+    position: relative;
+    z-index: 1;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+} 
+.gameCardWrapper:hover {
+    transform: translateY(-2px);
+    z-index: 2;
+    cursor: pointer;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.carouselContainer::-webkit-scrollbar {
+    display: none; /* Hide the scrollbar */
+}
+  
+  
+.carouselHeaderButtonContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    background-color: #3E374E;
+    border-radius: 6px;
+}
+  
+/* Mobile Responsive Styles */
+@media screen and (max-width: 768px) {
+    .carouselContainer {
+        padding: 0 5px;
+        gap: 8px;
+        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    }
+
+    .gameCardWrapper {
+        width: 140px;
+        transform: translateY(0); /* Reset hover transform on mobile */
+    }
+
+    .gameCardWrapper:hover {
+        transform: translateY(0); /* Disable hover effect on mobile */
+    }
+
+    .carouselHeader {
+        font-size: 20px;
+        margin-bottom: 15px;
+        padding: 0 5px;
+    }
+
+    .carouselHeaderButton {
+        padding: 8px;
+        font-size: 14px;
+        min-width: 40px; /* Ensure buttons are touch-friendly */
+        min-height: 40px;
+    }
+
+    .carouselHeaderButtonContainer {
+        gap: 5px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .carouselContainer {
+        padding: 0 5px;
+        gap: 4px;
+        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    }
+    
+    .gameCardWrapper {
+        width: 120px;
+    }
+
+    .carouselHeader {
+        font-size: 18px;
+        margin-bottom: 12px;
+    }
+
+    .carouselHeaderButton {
+        padding: 6px;
+        font-size: 12px;
+        min-width: 36px;
+        min-height: 36px;
+    }
+}
+  
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.shimmer {
+  background-size: 1000px 100%;
+  animation: shimmer 10s infinite linear;
+}
+
+.loadingCard {
+  width: 171px;
+  height: 200px;
+  border-radius: 10px;
+}
+
+/* Different shimmer colors for each card */
+.loadingCard:nth-child(3n) {
+  background: linear-gradient(90deg, #4A90E2 25%, #357ABD 50%, #4A90E2 75%);
+}
+
+.loadingCard:nth-child(3n+1) {
+  background: linear-gradient(90deg, #50E3C2 25%, #3DB3A2 50%, #50E3C2 75%);
+}
+
+.loadingCard:nth-child(3n+2) {
+  background: linear-gradient(90deg, #F5A623 25%, #D18B1C 50%, #F5A623 75%);
+}
+
+@media (prefers-color-scheme: dark) {
+  .loadingCard:nth-child(3n) {
+    background: linear-gradient(90deg, #2A3B4D 25%, #1F2B3A 50%, #2A3B4D 75%);
+  }
+
+  .loadingCard:nth-child(3n+1) {
+    background: linear-gradient(90deg, #1B3B35 25%, #142A26 50%, #1B3B35 75%);
+  }
+
+  .loadingCard:nth-child(3n+2) {
+    background: linear-gradient(90deg, #3D2A1B 25%, #2E1F14 50%, #3D2A1B 75%);
+  }
+}
+  
+  

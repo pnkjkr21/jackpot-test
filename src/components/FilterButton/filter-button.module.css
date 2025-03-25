@@ -1,0 +1,50 @@
+.filterButton {
+    background-color: transparent;
+    color: #EAE6F5;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 2px solid #332E42;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.filterButton:hover {
+    background-color: #332E42;
+    cursor: pointer;
+}
+
+.active {
+    background-color: #7658ED;
+    color: #EAE6F5;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 2px solid #CFB8FF00;
+}
+
+.active:hover {
+    cursor: pointer;
+}
+
+/* Tablet styles */
+@media screen and (max-width: 1024px) {
+    .filterButton, .active {
+        padding: 8px 16px;
+        font-size: 11px;
+    }
+}
+
+/* Mobile styles */
+@media screen and (max-width: 768px) {
+    .filterButton, .active {
+        padding: 6px 12px;
+        font-size: 10px;
+    }
+}
+
+/* Small mobile styles */
+@media screen and (max-width: 480px) {
+    .filterButton, .active {
+        padding: 5px 10px;
+        font-size: 9px;
+    }
+}

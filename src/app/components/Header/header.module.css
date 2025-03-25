@@ -1,0 +1,35 @@
+.actionItemsContainer{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Hide first two icon buttons on mobile */
+@media screen and (max-width: 768px) {
+    .actionItemsContainer> button:nth-child(-n+2) {
+        display: none;
+    }
+}
+
+.logoContainer {
+    position: relative;
+}
+
+.desktopLogo {
+    display: block;
+}
+
+.mobileLogo {
+    display: none;
+}
+
+/* Mobile styles */
+@media screen and (max-width: 768px) {
+    .desktopLogo {
+        display: none;
+    }
+    
+    .mobileLogo {
+        display: block;
+    }
+} 

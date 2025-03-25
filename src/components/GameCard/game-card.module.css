@@ -1,0 +1,31 @@
+.gameCard {
+  border-radius: 10px;
+  height: 227px;
+  width: 171px;
+  transition: all 0.3s ease;
+}
+
+/* Tablet styles */
+@media screen and (max-width: 1024px) {
+  .gameCard {
+    height: 200px;
+    width: 150px;
+  }
+}
+
+/* Mobile styles */
+@media screen and (max-width: 768px) {
+  .gameCard {
+    height: 180px;
+    width: 130px;
+  }
+}
+
+/* Small mobile styles */
+@media screen and (max-width: 480px) {
+  .gameCard {
+    height: 221px;
+    width: 165px;
+  }
+} 
+

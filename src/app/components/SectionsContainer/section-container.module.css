@@ -1,0 +1,36 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+.filterButtonsContainer {
+    display: flex;
+    gap: 12px;
+}
+
+/* Tablet and Mobile styles */
+@media screen and (max-width: 1024px) {
+    .filterButtonsContainer {
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        padding: 8px 0;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE and Edge */
+        max-width: calc(100vw - 120px); /* Account for the Clear Filters button */
+    }
+
+    .filterButtonsContainer::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Opera */
+    }
+}
+
+/* Mobile styles */
+@media screen and (max-width: 768px) {
+    .filterButtonsContainer {
+        max-width: calc(100vw - 100px);
+    }
+}
