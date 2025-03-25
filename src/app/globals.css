@@ -67,9 +67,8 @@ main, body, html {
 }
 
 .primary-button:hover {
-  background-color: #FFD700;
+  background-color: #8B6FFD;
   cursor: pointer;
-  color: black
 }
 
 .icon-button {
