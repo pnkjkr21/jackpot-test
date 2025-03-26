@@ -135,8 +135,11 @@
     }
 
     .carouselHeaderButton {
-        font-size: 14px;
+        font-size: 12px;
         padding: 8px 16px;
+    }
+    .arrowButton {
+        padding: 8px 12px;
     }
 }
 
@@ -153,6 +156,9 @@
 
     .carouselHeaderButton {
         font-size: 12px;
+        padding: 6px 12px;
+    }
+    .arrowButton {
         padding: 6px 12px;
     }
 
@@ -180,6 +186,9 @@
     .carouselHeaderButton {
         font-size: 11px;
         padding: 5px 10px;
+    }
+    .arrowButton {
+        padding: 4px 8px;
     }
 
     .carouselHeaderActionContainer {
