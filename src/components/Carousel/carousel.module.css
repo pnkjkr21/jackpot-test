@@ -26,12 +26,12 @@
     cursor: pointer;
 }
 .carouselHeaderButton {
-    font-size: 16px;
+    font-size: 12px;
     font-weight: 600;
     color: #EAE6F5;
     text-align: center;
     background-color: #3E374E;
-    padding: 10px 20px;
+    padding: 8.5px 15px;
     border-radius: 5px;
     border: 1px solid transparent;
     cursor: pointer;
@@ -39,12 +39,12 @@
     transition: all 0.3s ease;
 }
 .arrowButton {
-    font-size: 16px;
+    font-size: 12px;
     font-weight: 600;
     color: #EAE6F5;
     text-align: center;
     background-color: #3E374E;
-    padding: 10px 10px;
+    padding: 8px 10px;
     border-radius: 5px;
     border: 1px solid transparent;
     cursor: pointer;
