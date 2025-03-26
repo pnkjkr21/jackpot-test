@@ -16,26 +16,26 @@ export interface IAppProps {
 
 const Header = (props: IAppProps) => {
     return (
-        <header>
-            <div className={styles.logoContainer}>
-                <Image 
-                    src={logo} 
-                    alt="Desktop logo" 
-                    width="141" 
-                    height="26" 
-                    className={styles.desktopLogo}
-                />
-                <div className={styles.mobileLogo}>
-                    <JackpotOriginalIcon />
+            <header>
+                <div className={styles.logoContainer}>
+                    <Image 
+                        src={logo} 
+                        alt="Desktop logo" 
+                        width="141" 
+                        height="26" 
+                        className={styles.desktopLogo}
+                    />
+                    <div className={styles.mobileLogo}>
+                        <JackpotOriginalIcon />
+                    </div>
                 </div>
-            </div>
-            <div className={styles.actionItemsContainer}>
-                <IconButton icon={<MagnifyGlassIcon fill='#3E374E' />} />
-                <IconButton icon={<UserOutline />} />
-                <SecondaryButton text='login' />
-                <PrimaryButton text='Register' />
-            </div>
-        </header>
+                <div className={styles.actionItemsContainer}>
+                    <IconButton icon={<MagnifyGlassIcon fill='#3E374E' />} />
+                    <IconButton icon={<UserOutline />} />
+                    <SecondaryButton text='Login' />
+                    <PrimaryButton text='Register' />
+                </div>
+            </header>
     );
 }
 

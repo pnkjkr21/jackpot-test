@@ -1,11 +1,14 @@
 .filterButton {
     background-color: transparent;
     color: #EAE6F5;
-    padding: 10px 20px;
+    padding: 5px 10px;
     border-radius: 5px;
     border: 2px solid #332E42;
     font-size: 12px;
     white-space: nowrap;
+    font-weight: 400;
+    font-style: 12px;
+    transition: all 0.3s ease;
 }
 
 .filterButton:hover {
@@ -16,7 +19,7 @@
 .active {
     background-color: #7658ED;
     color: #EAE6F5;
-    padding: 10px 20px;
+    padding: 5px 15px;
     border-radius: 5px;
     border: 2px solid #CFB8FF00;
     font-size: 12px;

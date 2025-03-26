@@ -20,12 +20,12 @@
     color: #EAE6F5;
 }
 .carouselHeaderButton {
-    font-size: 16px;
+    font-size: 12px;
     font-weight: 600;
     color: #EAE6F5;
     text-align: center;
     background-color: #3E374E;
-    padding: 10px 20px;
+    padding: 5px 15px;
     border-radius: 5px;
     border: 1px solid transparent;
     cursor: pointer;
@@ -33,14 +33,13 @@
     transition: all 0.3s ease;
 }
 .carouselHeaderButton:hover {
-    color: white;
-    background-color: #7658ED;
+    color: #EAF6F5;
 }
 .carouselHeaderButton:hover svg {
-    color: white;
+    color: #EAE6F5;
 }
 .carouselHeaderButton:hover svg path {
-    fill: white;
+    fill: #EAE6F5;
 }
 .carouselHeaderButton:disabled {
     opacity: 0.5;
@@ -153,7 +152,7 @@
 
     .carouselHeaderButton {
         font-size: 12px;
-        padding: 6px 12px;
+        padding: 5px 15px;
     }
 
     .carouselHeaderActionContainer {

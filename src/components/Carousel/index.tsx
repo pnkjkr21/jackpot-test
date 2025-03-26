@@ -98,8 +98,8 @@ const CarouselComponent = ({
             {/* Show actual cards */}
             {!isEmpty(items) ? (
               <>
-              {items?.slice(0, 12).map((item: any) => (
-                <div key={item?.thumbnail} className={styles.gameCardWrapper}>
+              {items.slice(0, 12).map((item: any) => (
+                <div key={item.slug} className={styles.gameCardWrapper}>
                   <GameCard data={item} />
                 </div>
               ))}

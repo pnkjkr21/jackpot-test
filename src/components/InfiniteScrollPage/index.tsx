@@ -8,7 +8,7 @@ import { isEmpty } from "lodash";
 import NoDataComponent from "../NoDataComponent.tsx";
 
 
-const INLINE_STYLE_FOR_GAME_CARD = {
+export const INLINE_STYLE_FOR_GAME_CARD = {
   display: "grid",
   gridTemplateColumns: `repeat(auto-fill, minmax(160px, 1fr))`,
   width: "100%",

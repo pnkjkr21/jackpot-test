@@ -15,8 +15,9 @@ import { isEmpty } from "lodash";
 import { useSearchStore } from "@/store";
 import SearchFilterComponent from "@/components/SearchFilterComponent";
 import Dropdown from "@/components/CheckboxDropdownFilter";
+import StarredGames from "@/components/StarredGames";
 
-const SectionsContainer = () => {
+const SectionsContainer = ({ starredGames, setStarredGames }: { starredGames: boolean, setStarredGames: (starredGames: boolean) => void }) => {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -69,8 +70,12 @@ const SectionsContainer = () => {
       setSelectedVendors(filtereVendorIds.map((v) => v.id));
     } else {
       setSelectedVendors([]);
-    }
+    };
   }, [pathname, searchParams]);
+  
+  const onStarredGamesClick = () => {
+    setStarredGames(!starredGames);
+  }
 
   useEffect(() => {
     updateUrl({ vendor: selectedVendors });
@@ -81,7 +86,11 @@ const SectionsContainer = () => {
     setActiveParams({});
     router.push(`${pathname}`);
   };
-
+  
+  const onFilterClick = (id: string) => {
+    setStarredGames(false);
+    updateUrl({ category: id, vendor: selectedVendors })
+  }
   return (
     <>
       <div className={styles.actionItemContainer}>
@@ -91,11 +100,12 @@ const SectionsContainer = () => {
               key={button.id}
               text={button.title}
               onClick={() =>
-                updateUrl({ category: button.id, vendor: selectedVendors })
+                onFilterClick(button.id)
               }
-              isActive={category === button.id}
+              isActive={category === button.id && !starredGames}
             />
           ))}
+          <FilterButton text="Starred Games" onClick={()=>onStarredGamesClick()} isActive={starredGames} />
         </div>
         <div className={styles.dropdownContainer}>
           <Dropdown
@@ -106,9 +116,9 @@ const SectionsContainer = () => {
           <FilterButton text="Clear Filters" onClick={clearFilters} />
         </div>
       </div>
-      {!isEmpty(searchQuery) ? (
+      {!isEmpty(searchQuery) && !starredGames ? (
         <SearchFilterComponent />
-      ) : isEmpty(activeParams) && isEmpty(selectedVendors) ? (
+      ) : isEmpty(activeParams) && isEmpty(selectedVendors) && !starredGames ? (
         <div className={styles.container}>
           {SECTIONS.map((section) => (
             <Carousel
@@ -120,7 +130,7 @@ const SectionsContainer = () => {
             />
           ))}
         </div>
-      ) : (
+      ) : !starredGames? (
         <>
           <InfiniteScrollPage
             params={{
@@ -131,6 +141,8 @@ const SectionsContainer = () => {
             }}
           />
         </>
+      ) : (
+        <StarredGames />
       )}
     </>
   );
