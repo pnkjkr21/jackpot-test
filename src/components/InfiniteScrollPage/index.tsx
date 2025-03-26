@@ -1,12 +1,12 @@
 import React from "react";
 import GameCard from "../GameCard";
-import styles from "./infinite-scroll-page.module.css";
 import carouselStyles from "../Carousel/carousel.module.css";
 import { useInfiniteGames } from "@/utility/hooks/useInfiniteSearchGames";
 import InfinitScrollContainer from "../InfinitScrollContainer.tsx/index";
 import { isEmpty } from "lodash";
 import NoDataComponent from "../NoDataComponent.tsx";
 import ErrorState from "../ErrorState";
+import LoadingState from "./loadingState";
 
 export const INLINE_STYLE_FOR_GAME_CARD = {
   display: "grid",
@@ -31,14 +31,7 @@ const InfiniteScrollPage = ({ params }: { params: any }) => {
 
   if (isPending) {
     return (
-      <div style={INLINE_STYLE_FOR_GAME_CARD}>
-        {Array.from({ length: 24 }).map((_, index) => (
-          <div
-            key={index}
-            className={`${carouselStyles.loadingCard} ${carouselStyles.shimmer}`}
-          />
-        ))}
-      </div>
+      <LoadingState />
     );
   }
   
@@ -71,14 +64,7 @@ const InfiniteScrollPage = ({ params }: { params: any }) => {
           }
       </InfinitScrollContainer>
       {isFetchingNextPage && (
-        <div style={INLINE_STYLE_FOR_GAME_CARD}>
-          {Array.from({ length: 24 }).map((_, index) => (
-            <div
-              key={index}
-              className={`${carouselStyles.loadingCard} ${carouselStyles.shimmer}`}
-            />
-          ))}
-        </div>
+        <LoadingState />
       )}
     </div>
   );

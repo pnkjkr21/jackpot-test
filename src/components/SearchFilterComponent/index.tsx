@@ -7,7 +7,7 @@ import styles from "../InfiniteScrollPage/infinite-scroll-page.module.css";
 import NoDataComponent from "../NoDataComponent.tsx";
 import { isEmpty } from "lodash";
 import ErrorState from "../ErrorState";
-
+import LoadingState from "../InfiniteScrollPage/loadingState";
 const SearchFilterComponent = () => {
   const { searchQuery } = useSearchStore();
   // we are debouncing the search query to avoid unnecessary api calls
@@ -18,7 +18,10 @@ const SearchFilterComponent = () => {
   if (isError) {
     return <ErrorState />
   }
-
+  
+  if (isLoading) {
+    return <LoadingState />
+  }
   return isEmpty(items) ? (
     <NoDataComponent text="No Games Found For this Filter" />
   ) : (
