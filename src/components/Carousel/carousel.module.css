@@ -20,39 +20,49 @@
     color: #EAE6F5;
 }
 .carouselHeaderButton {
-    font-size: 12px;
+    font-size: 16px;
     font-weight: 600;
     color: #EAE6F5;
     text-align: center;
     background-color: #3E374E;
-    padding: 5px 15px;
+    padding: 10px 20px;
     border-radius: 5px;
     border: 1px solid transparent;
     cursor: pointer;
     white-space: nowrap;
     transition: all 0.3s ease;
 }
-.carouselHeaderButton:hover {
-    color: #EAF6F5;
-}
-.carouselHeaderButton:hover svg {
+.arrowButton {
+    font-size: 16px;
+    font-weight: 600;
     color: #EAE6F5;
+    text-align: center;
+    background-color: #3E374E;
+    padding: 10px 10px;
+    border-radius: 5px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.3s ease;
 }
-.carouselHeaderButton:hover svg path {
-    fill: #EAE6F5;
+.arrowButton:hover svg {
+    color: white;
 }
-.carouselHeaderButton:disabled {
+.arrowButton:hover svg path {
+    fill: white;
+}
+.arrowButton:disabled {
     opacity: 0.5;
     cursor: default;
 }
-.carouselHeaderButton:disabled:hover {
+.arrowButton:disabled:hover {
     background-color: #3E374E;
     color: #EAE6F5;
 }
-.carouselHeaderButton:disabled:hover svg {
+.arrowButton:disabled:hover svg {
     color: #EAE6F5;
 }
-.carouselHeaderButton:disabled:hover svg path {
+.arrowButton:disabled:hover svg path {
     fill: #EAE6F5;
 }
 .carouselHeaderTitleContainer {
@@ -64,7 +74,6 @@
 }
 .carouselHeaderTitleContainer:hover {
     cursor: pointer;
-    background-color: #7658ED;
     color: white;
     border-radius: 5px;
 }
@@ -152,7 +161,7 @@
 
     .carouselHeaderButton {
         font-size: 12px;
-        padding: 5px 15px;
+        padding: 6px 12px;
     }
 
     .carouselHeaderActionContainer {

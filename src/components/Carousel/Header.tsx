@@ -22,10 +22,10 @@ function Header({ handleScrollLeft, handleScrollRight, isLeftButtonDisabled, isR
         <div className={styles.carouselHeaderActionContainer}>
             <button className={styles.carouselHeaderButton} onClick={viewAll}>View All</button>
             <div className={styles.carouselHeaderButtonContainer}>
-                <button className={styles.carouselHeaderButton} onClick={handleScrollLeft} disabled={isLeftButtonDisabled}>
+                <button className={styles.arrowButton} onClick={handleScrollLeft} disabled={isLeftButtonDisabled}>
                     <LeftArrow color="#EAE6F5" />
                 </button>
-                <button className={styles.carouselHeaderButton} onClick={handleScrollRight} disabled={isRightButtonDisabled}>
+                <button className={styles.arrowButton} onClick={handleScrollRight} disabled={isRightButtonDisabled}>
                     <RightArrow color="#EAE6F5" />
                 </button>
             </div>

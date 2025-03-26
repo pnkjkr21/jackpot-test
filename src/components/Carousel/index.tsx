@@ -36,10 +36,12 @@ const CarouselComponent = ({
   useEffect(() => {
     const updateButtonStates = () => {
       if (scrollContainerRef.current) {
-        setIsLeftButtonDisabled(scrollContainerRef.current.scrollLeft === 0);
-        setIsRightButtonDisabled(
-          scrollContainerRef.current.scrollLeft + scrollContainerRef.current.clientWidth >= scrollContainerRef.current.scrollWidth
-        );
+        const container = scrollContainerRef.current;
+        setIsLeftButtonDisabled(container.scrollLeft <= 0);
+        
+        // Check if we've reached the end of scroll
+        const hasReachedEnd = container.scrollLeft + container.clientWidth >= container.scrollWidth - 1;
+        setIsRightButtonDisabled(hasReachedEnd);
       }
     };
 
@@ -55,12 +57,12 @@ const CarouselComponent = ({
         container.removeEventListener('scroll', updateButtonStates);
       }
     };
-  }, []);
+  }, [items]);
 
   //implement two buttons to scroll left and right such than on clicking right it will take me to last set of items and on clicking left it will take me to first set of items
   const handleScrollRight = () => {
     if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollLeft += (200 + 16) * 12; // Adjust the amount to scroll
+      scrollContainerRef.current.scrollLeft += (171 + 16) * 13; // Adjust the amount to scroll
     }
   };
   const handleScrollLeft = () => {
