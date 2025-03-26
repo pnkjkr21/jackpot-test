@@ -10,7 +10,7 @@ export function useSearchGames(searchQuery: string) {
     enabled: !!searchQuery,
     staleTime: 1000 * 60 * 5,
     gcTime: 1000 * 60 * 5,
-    retry: 1,
+    retry: 2,
     retryDelay: attempt => Math.min(1000 * 2 ** attempt, 30000),
   });
 }

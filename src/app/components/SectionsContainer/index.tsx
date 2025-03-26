@@ -86,6 +86,7 @@ const SectionsContainer = ({ starredGames, setStarredGames }: { starredGames: bo
   const onStarredGamesClick = () => setStarredGames(!starredGames);
 
   const renderContent = () => {
+    // first priority is favorite games if it is true then show favorite games otherwise search query component
     if (!isEmpty(searchQuery) && !starredGames) {
       return <SearchFilterComponent />;
     }
@@ -93,7 +94,7 @@ const SectionsContainer = ({ starredGames, setStarredGames }: { starredGames: bo
     if (starredGames) {
       return <StarredGames />;
     }
-
+    // if everything is empty then we show the first page
     if (isEmpty(activeParams) && isEmpty(selectedVendors)) {
       return (
         <div className={styles.container}>
@@ -109,7 +110,8 @@ const SectionsContainer = ({ starredGames, setStarredGames }: { starredGames: bo
         </div>
       );
     }
-
+    // if someone clicked on category tags then it will set that params and show cards of that category
+    // if additional vendors checklist is checked then it will fetch cards of those vendors and the chosen category
     return (
       <InfiniteScrollPage
         params={{

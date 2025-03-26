@@ -10,7 +10,8 @@ export const baseUrl = 'https://jpapi-staging.jackpot.bet'
 
 export const EMPTY_GAME_IMAGE = 'https://cdn.prod.website-files.com/5d4bc52e7ec3666956bd3bf1/64f8600dac4d6ff134531794_thumbnail.webp'
 
-
+// we are setting the limit to 13 to check if there are cards more than 12 if that is the case 
+// then we are showing last card with view all card
 export const SECTIONS = [
     {
         id: 'featured',

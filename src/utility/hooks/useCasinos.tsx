@@ -43,7 +43,7 @@ const useCasinos = (params:any = {}) => {
     queryFn: () => fetchGames(params),
     staleTime: 5 * 60 * 1000,
     gcTime: 30 * 60 * 1000,
-    retry: 1,
+    retry: 2,
     retryDelay: attempt => Math.min(1000 * 2 ** attempt, 30000),
   });
 };

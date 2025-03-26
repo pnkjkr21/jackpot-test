@@ -6,9 +6,8 @@ import useCasinos from "@/utility/hooks/useCasinos";
 import { isEmpty } from "lodash";
 import ViewAllCard from "../ViewAllCard";
 import { usePathname, useRouter } from "next/navigation";
-import NoDataComponent from "../NoDataComponent.tsx";
 import ErrorCarouselState from "./components/ErrorState/index";
-
+import NoDataCarouselState from "./components/NoDataState/index";
 
 const CarouselComponent = ({
   title,
@@ -35,6 +34,9 @@ const CarouselComponent = ({
   const [isLeftButtonDisabled, setIsLeftButtonDisabled] = useState(true);
   const [isRightButtonDisabled, setIsRightButtonDisabled] = useState(false);
 
+  // this useEffect is used to check if the user has scrolled to the left or right of the carousel
+  // if the user has scrolled to the left or right of the carousel then the isLeftButtonDisabled or isRightButtonDisabled is set to true
+  // that is why the ref is place at the bottome of the children component
   useEffect(() => {
     const updateButtonStates = () => {
       if (scrollContainerRef.current) {
@@ -102,6 +104,8 @@ const CarouselComponent = ({
         ) : (
           <>
             {/* Show actual cards */}
+            {/* here we are expecting 13 cards as the limit is set 13, it is to check if there are cards more than 12 if that is the case  */}
+            {/* if there are more than 12 cards then we are showing view all card as last card */}
             {!isEmpty(items) ? (
               <>
               {items.slice(0, 12).map((item: any) => (
@@ -120,7 +124,7 @@ const CarouselComponent = ({
               <ErrorCarouselState />
             ) : (
               <>
-                <NoDataComponent />
+                <NoDataCarouselState />
               </>
             )}
           </>

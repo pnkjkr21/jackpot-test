@@ -10,7 +10,7 @@ function GameCard({ data }: { data: any }) {
   const isFavorite = favoriteGames.map((game) => game.slug).includes(data.slug);
   const handleFavorite = () => {
     if (isFavorite) {
-      setFavoriteGames(favoriteGames.filter((game) => game.id !== data.id));
+      setFavoriteGames(favoriteGames.filter((game) => game.slug !== data.slug));
     } else {
       setFavoriteGames([...favoriteGames, data]);
     }

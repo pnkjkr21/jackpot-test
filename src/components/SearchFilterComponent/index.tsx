@@ -10,6 +10,7 @@ import ErrorState from "../ErrorState";
 
 const SearchFilterComponent = () => {
   const { searchQuery } = useSearchStore();
+  // we are debouncing the search query to avoid unnecessary api calls
   const [debouncedSearchQuery] = useDebounce(searchQuery, 500);
   const { data, isLoading, isError } = useSearchGames(debouncedSearchQuery);
   const { items } = data?.data || [];
