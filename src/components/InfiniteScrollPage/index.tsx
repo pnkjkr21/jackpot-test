@@ -6,7 +6,7 @@ import InfinitScrollContainer from "../InfinitScrollContainer.tsx/index";
 import { isEmpty } from "lodash";
 import NoDataComponent from "../NoDataComponent.tsx";
 import ErrorState from "../ErrorState";
-import LoadingState from "./loadingState";
+import LoadingState from "../LoadingState/LoadingState";
 
 export const INLINE_STYLE_FOR_GAME_CARD = {
   display: "grid",

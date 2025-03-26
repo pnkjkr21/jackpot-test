@@ -7,7 +7,7 @@ import styles from "../InfiniteScrollPage/infinite-scroll-page.module.css";
 import NoDataComponent from "../NoDataComponent.tsx";
 import { isEmpty } from "lodash";
 import ErrorState from "../ErrorState";
-import LoadingState from "../InfiniteScrollPage/loadingState";
+import LoadingState from "../LoadingState/LoadingState";
 const SearchFilterComponent = () => {
   const { searchQuery } = useSearchStore();
   // we are debouncing the search query to avoid unnecessary api calls

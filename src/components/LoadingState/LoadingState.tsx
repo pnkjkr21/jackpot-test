@@ -1,6 +1,6 @@
 import React from "react";
 import carouselStyles from "../Carousel/carousel.module.css";
-import { INLINE_STYLE_FOR_GAME_CARD } from "./index";
+import { INLINE_STYLE_FOR_GAME_CARD } from "../InfiniteScrollPage/index";
 
 const LoadingState = () => {
   return (
