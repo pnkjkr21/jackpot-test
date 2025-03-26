@@ -13,6 +13,7 @@
     width: 100%;
     box-sizing: border-box; /* Include padding/border in width */
     overflow-x: auto;
+    transition: all 0.3s ease;
 }
 
 /* Tablet and Mobile styles */
