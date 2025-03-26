@@ -6,7 +6,7 @@
 .dropdownContent {
     position: absolute;
     top: 100%;
-    right: 0;
+    right: -15px;
     background-color: #1A1625;
     border: 1px solid #332E42;
     border-radius: 5px;
