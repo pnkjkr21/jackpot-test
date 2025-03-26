@@ -1,6 +1,6 @@
 import React from "react";
 
-const TableGamesIcon = ({ width = 19, height = 20, fill = "#ff9933" }: { width?: number, height?: number, fill?: string }) => {
+const TableGamesIcon = ({ width = 30, height = 30, fill = "#ff9933" }: { width?: number, height?: number, fill?: string }) => {
   return (
     <svg
       width={width}
@@ -8,6 +8,7 @@ const TableGamesIcon = ({ width = 19, height = 20, fill = "#ff9933" }: { width?:
       viewBox="0 0 19 20"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      transform="rotate(90)"
     >
       <mask
         id="mask0_186_12"

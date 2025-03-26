@@ -19,6 +19,12 @@
     font-weight: 600;
     color: #EAE6F5;
 }
+.carouselHeaderTitle:hover {
+    font-size: 24px;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+}
 .carouselHeaderButton {
     font-size: 16px;
     font-weight: 600;
@@ -71,20 +77,6 @@
     justify-content: center;
     gap: 10px;
     padding: 10px;
-}
-.carouselHeaderTitleContainer:hover {
-    cursor: pointer;
-    color: white;
-    border-radius: 5px;
-}
-.carouselHeaderTitleContainer:hover svg {
-    color: white;
-}
-.carouselHeaderTitleContainer:hover svg path {
-    fill: white;
-}
-.carouselHeaderTitleContainer:hover .carouselHeaderTitle {
-    color: white;
 }
 /* make the container size flexible for different size screen */
 @media screen and (max-width: 1024px) {

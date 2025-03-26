@@ -1,6 +1,6 @@
 import React from "react";
 
-const SlotsIcon = ({ width = 19, height = 20, fill = "#ff9933" }: { width?: number, height?: number, fill?: string }) => {
+const SlotsIcon = ({ width = 30, height = 30, fill = "#ff9933" }: { width?: number, height?: number, fill?: string }) => {
   return (
     <svg
       width={width}

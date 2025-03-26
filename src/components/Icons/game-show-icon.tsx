@@ -1,6 +1,6 @@
 import React from "react";
 
-const GameShowsIcon = ({ width = 17, height = 18, fill = "#ff9933" }: { width?: number, height?: number, fill?: string }) => {
+const GameShowsIcon = ({ width = 30, height = 30, fill = "#ff9933" }: { width?: number, height?: number, fill?: string }) => {
   return (
     <svg
       width={width}

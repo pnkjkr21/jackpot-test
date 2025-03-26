@@ -1,6 +1,6 @@
 const NewGamesIcon = ({
-  width = 25,
-  height = 26,
+  width = 35,
+  height = 35,
 }: {
   width?: number;
   height?: number;
