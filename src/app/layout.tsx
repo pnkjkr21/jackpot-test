@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Poppins } from "next/font/google";
 import QueryProvider from "@/components/QueryProvider/QueryProvider";
 import "./globals.css";
 import Header from "./components/Header/Header";
+import { Suspense } from "react";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -28,8 +29,10 @@ export default function RootLayout({
       <body>
         <QueryProvider>
           <div className="root-style">
-            <Header />
-            {children}
+            <Suspense>
+              <Header />
+              {children}
+            </Suspense>
           </div>
         </QueryProvider>
       </body>
