@@ -78,12 +78,7 @@
     gap: 10px;
     padding: 10px;
 }
-/* make the container size flexible for different size screen */
-@media screen and (max-width: 1024px) {
-    .carouselContainer {
-        gap: 10px; /* Increased gap for more space between images */
-    }
-}
+
 .carouselContainer {
     display: flex;
     justify-content: space-between;
@@ -121,6 +116,32 @@
     gap: 4px;
     background-color: #3E374E;
     border-radius: 6px;
+}
+.errorCarouselState {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    color: red;
+    width: 100%;
+}
+
+.noDataCarouselState {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    width: 100%;
+    color: #EAE6F5;
+}
+
+/* make the container size flexible for different size screen */
+@media screen and (max-width: 1024px) {
+    .carouselContainer {
+        gap: 10px; /* Increased gap for more space between images */
+    }
 }
   
 /* Tablet styles */

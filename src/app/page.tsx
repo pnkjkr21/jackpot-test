@@ -31,7 +31,7 @@ export default function Home() {
   
   return (
     <div className="content-container">
-      <SearchBar placeholder="Search a game.." value={searchQuery} onChange={handleSearch} />
+      <SearchBar placeholder="Search a game..." value={searchQuery} onChange={handleSearch} />
       <SectionsContainer starredGames={starredGames} setStarredGames={setStarredGames} />
     </div>
   );

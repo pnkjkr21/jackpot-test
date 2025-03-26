@@ -27,55 +27,46 @@ const SectionsContainer = ({ starredGames, setStarredGames }: { starredGames: bo
 
   const { setSearchQuery, searchQuery } = useSearchStore();
 
-  const updateUrl = useCallback(
-    ({ category, vendor = [] }: { category?: string; vendor?: string[] }) => {
-      setSearchQuery("");
-      const params = new URLSearchParams(searchParams);
-      if (category) {
-        const oldValue = params.get("category");
-        if (oldValue !== category) {
-          params.delete("category");
-          params.set("category", category);
-          router.push(`${pathname}?${params.toString()}`);
-        }
-      }
+  const updateUrl = useCallback(({ category, vendor = [] }: { category?: string; vendor?: string[] }) => {
+    setSearchQuery("");
+    const params = new URLSearchParams(searchParams);
+    
+    const updateCategory = () => {
+      if (!category) return;
+      const oldValue = params.get("category");
+      if (oldValue === category) return;
+      params.delete("category");
+      params.set("category", category);
+      router.push(`${pathname}?${params.toString()}`);
+    };
+
+    const updateVendor = () => {
       if (isEmpty(vendor)) {
         params.delete("vendor");
-        router.push(`${pathname}?${params.toString()}`);
       } else {
-        const vendorParams = vendor.join(",");
-        params.set("vendor", vendorParams);
-        router.push(`${pathname}?${params.toString()}`);
+        params.set("vendor", vendor.join(","));
       }
-    },
-    [searchParams, pathname]
-  );
+      router.push(`${pathname}?${params.toString()}`);
+    };
+
+    updateCategory();
+    updateVendor();
+  }, [searchParams, pathname]);
 
   useEffect(() => {
     const category = searchParams.get("category");
     const vendor = searchParams.get("vendor");
-    if (category && category in PARAMS_FOR_ACTION_BUTTONS) {
-      const params =
-        PARAMS_FOR_ACTION_BUTTONS[
-          category as keyof typeof PARAMS_FOR_ACTION_BUTTONS
-        ];
-      setActiveParams(params);
-    } else {
-      setActiveParams({});
-    }
-    if (vendor) {
-      const filtereVendorIds = VENDORS.filter((v) =>
-        vendor.split(",").includes(v.id)
-      );
-      setSelectedVendors(filtereVendorIds.map((v) => v.id));
-    } else {
-      setSelectedVendors([]);
-    };
+    
+    const params = category && category in PARAMS_FOR_ACTION_BUTTONS
+      ? PARAMS_FOR_ACTION_BUTTONS[category as keyof typeof PARAMS_FOR_ACTION_BUTTONS]
+      : {};
+    setActiveParams(params);
+
+    const vendorIds = vendor
+      ? VENDORS.filter(v => vendor.split(",").includes(v.id)).map(v => v.id)
+      : [];
+    setSelectedVendors(vendorIds);
   }, [pathname, searchParams]);
-  
-  const onStarredGamesClick = () => {
-    setStarredGames(!starredGames);
-  }
 
   useEffect(() => {
     updateUrl({ vendor: selectedVendors });
@@ -86,39 +77,25 @@ const SectionsContainer = ({ starredGames, setStarredGames }: { starredGames: bo
     setActiveParams({});
     router.push(`${pathname}`);
   };
-  
+
   const onFilterClick = (id: string) => {
     setStarredGames(false);
-    updateUrl({ category: id, vendor: selectedVendors })
-  }
-  return (
-    <>
-      <div className={styles.actionItemContainer}>
-        <div className={styles.filterButtonsContainer}>
-          {ACTION_BUTTONS.map((button) => (
-            <FilterButton
-              key={button.id}
-              text={button.title}
-              onClick={() =>
-                onFilterClick(button.id)
-              }
-              isActive={category === button.id && !starredGames}
-            />
-          ))}
-          <FilterButton text="Starred Games" onClick={()=>onStarredGamesClick()} isActive={starredGames} />
-        </div>
-        <div className={styles.dropdownContainer}>
-          <Dropdown
-            filters={VENDORS}
-            selectedFilters={selectedVendors}
-            setSelectedFilters={setSelectedVendors}
-          />
-          <FilterButton text="Clear Filters" onClick={clearFilters} />
-        </div>
-      </div>
-      {!isEmpty(searchQuery) && !starredGames ? (
-        <SearchFilterComponent />
-      ) : isEmpty(activeParams) && isEmpty(selectedVendors) && !starredGames ? (
+    updateUrl({ category: id, vendor: selectedVendors });
+  };
+
+  const onStarredGamesClick = () => setStarredGames(!starredGames);
+
+  const renderContent = () => {
+    if (!isEmpty(searchQuery) && !starredGames) {
+      return <SearchFilterComponent />;
+    }
+
+    if (starredGames) {
+      return <StarredGames />;
+    }
+
+    if (isEmpty(activeParams) && isEmpty(selectedVendors)) {
+      return (
         <div className={styles.container}>
           {SECTIONS.map((section) => (
             <Carousel
@@ -130,20 +107,49 @@ const SectionsContainer = ({ starredGames, setStarredGames }: { starredGames: bo
             />
           ))}
         </div>
-      ) : !starredGames? (
-        <>
-          <InfiniteScrollPage
-            params={{
-              ...activeParams,
-              vendor: !isEmpty(activeParams?.vendor)
-                ? [...selectedVendors, activeParams.vendor]
-                : selectedVendors,
-            }}
+      );
+    }
+
+    return (
+      <InfiniteScrollPage
+        params={{
+          ...activeParams,
+          vendor: !isEmpty(activeParams?.vendor)
+            ? [...selectedVendors, activeParams.vendor]
+            : selectedVendors,
+        }}
+      />
+    );
+  };
+
+  return (
+    <>
+      <div className={styles.actionItemContainer}>
+        <div className={styles.filterButtonsContainer}>
+          {ACTION_BUTTONS.map((button) => (
+            <FilterButton
+              key={button.id}
+              text={button.title}
+              onClick={() => onFilterClick(button.id)}
+              isActive={category === button.id && !starredGames}
+            />
+          ))}
+          <FilterButton 
+            text="Starred Games" 
+            onClick={onStarredGamesClick} 
+            isActive={starredGames} 
           />
-        </>
-      ) : (
-        <StarredGames />
-      )}
+        </div>
+        <div className={styles.dropdownContainer}>
+          <Dropdown
+            filters={VENDORS}
+            selectedFilters={selectedVendors}
+            setSelectedFilters={setSelectedVendors}
+          />
+          <FilterButton text="Clear Filters" onClick={clearFilters} />
+        </div>
+      </div>
+      {renderContent()}
     </>
   );
 };

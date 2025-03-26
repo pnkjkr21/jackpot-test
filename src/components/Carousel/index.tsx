@@ -1,11 +1,13 @@
 import { useRef, useState, useEffect } from "react";
 import GameCard from "../GameCard";
-import Header from "./Header";
+import Header from "./components/Header/Header";
 import styles from "./carousel.module.css";
 import useCasinos from "@/utility/hooks/useCasinos";
 import { isEmpty } from "lodash";
 import ViewAllCard from "../ViewAllCard";
 import { usePathname, useRouter } from "next/navigation";
+import NoDataComponent from "../NoDataComponent.tsx";
+import ErrorCarouselState from "./components/ErrorState/index";
 
 
 const CarouselComponent = ({
@@ -27,7 +29,7 @@ const CarouselComponent = ({
       router.push(`${pathname}?category=${id}`)
   }
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const { data, isLoading: useCasinosLoading } = useCasinos(params);
+  const { data, isLoading, isError } = useCasinos(params);
   const { items = [] } = data?.data || {}
 
   const [isLeftButtonDisabled, setIsLeftButtonDisabled] = useState(true);
@@ -59,6 +61,7 @@ const CarouselComponent = ({
     };
   }, [items]);
 
+
   //implement two buttons to scroll left and right such than on clicking right it will take me to last set of items and on clicking left it will take me to first set of items
   const handleScrollRight = () => {
     if (scrollContainerRef.current) {
@@ -81,12 +84,13 @@ const CarouselComponent = ({
         title={title}
         Icon={Icon}
         viewAll={viewAll}
+        isError={isError}
       />
       <div
         ref={scrollContainerRef}
         className={`${styles.carouselContainer}`}
       >
-        {useCasinosLoading ? (
+        {isLoading ? (
           // Show shimmer loading cards
           Array(12)
             .fill(0)
@@ -112,9 +116,11 @@ const CarouselComponent = ({
                   </div>
               }
               </>
+            ) : isError ? (
+              <ErrorCarouselState />
             ) : (
               <>
-                <div className={styles.noData}>No data found</div>
+                <NoDataComponent />
               </>
             )}
           </>

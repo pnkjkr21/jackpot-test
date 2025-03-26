@@ -6,7 +6,7 @@ import { useInfiniteGames } from "@/utility/hooks/useInfiniteSearchGames";
 import InfinitScrollContainer from "../InfinitScrollContainer.tsx/index";
 import { isEmpty } from "lodash";
 import NoDataComponent from "../NoDataComponent.tsx";
-
+import ErrorState from "../ErrorState";
 
 export const INLINE_STYLE_FOR_GAME_CARD = {
   display: "grid",
@@ -25,6 +25,7 @@ const InfiniteScrollPage = ({ params }: { params: any }) => {
     isFetchingNextPage,
     isPending,
     isFetching,
+    isError,
   } = useInfiniteGames(params);
   const searchData = data?.pages.flatMap((page: any) => page.data?.items)?.filter((item: any) => !isEmpty(item)) || [];
 
@@ -39,6 +40,12 @@ const InfiniteScrollPage = ({ params }: { params: any }) => {
         ))}
       </div>
     );
+  }
+  
+  if (isError) {
+    return (
+      <ErrorState />
+    )
   }
   
   if (isEmpty(searchData)) {
