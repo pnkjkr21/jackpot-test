@@ -36,7 +36,6 @@ const CarouselComponent = ({
 
   // this useEffect is used to check if the user has scrolled to the left or right of the carousel
   // if the user has scrolled to the left or right of the carousel then the isLeftButtonDisabled or isRightButtonDisabled is set to true
-  // that is why the ref is place at the bottome of the children component
   useEffect(() => {
     const updateButtonStates = () => {
       if (scrollContainerRef.current) {
