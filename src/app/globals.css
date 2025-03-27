@@ -193,7 +193,7 @@ main, body, html {
   }
 
   header {
-    padding: 8px 0;
+    padding: 8px -10;
   }
 
   .input-container .input {
