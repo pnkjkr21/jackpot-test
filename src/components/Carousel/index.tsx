@@ -66,12 +66,12 @@ const CarouselComponent = ({
   //implement two buttons to scroll left and right such than on clicking right it will take me to last set of items and on clicking left it will take me to first set of items
   const handleScrollRight = () => {
     if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollLeft += (171 + 16) * 13; // Adjust the amount to scroll
+      scrollContainerRef.current.scrollLeft += (171 + 16) * 13;
     }
   };
   const handleScrollLeft = () => {
     if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollLeft = 0; // Adjust the amount to scroll
+      scrollContainerRef.current.scrollLeft = 0;
     }
   };
 
