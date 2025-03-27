@@ -10,7 +10,7 @@ import LoadingState from "../LoadingState/LoadingState";
 
 export const INLINE_STYLE_FOR_GAME_CARD = {
   display: "grid",
-  gridTemplateColumns: `repeat(auto-fill, minmax(160px, 1fr))`,
+  gridTemplateColumns: `repeat(auto-fill, minmax(150px, 1fr))`,
   width: "100%",
   padding: "20px 0px",
   gap: "20px",

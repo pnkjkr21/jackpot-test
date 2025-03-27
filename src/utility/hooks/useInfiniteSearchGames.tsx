@@ -37,7 +37,7 @@ export function useInfiniteGames({
     },
     staleTime: 1000 * 60 * 5,
     gcTime: 1000 * 60 * 5,
-    retry: 2,               // Number of retries (default is 3)
+    retry: 2,               // Number of retries
     retryDelay: attempt => Math.min(1000 * 2 ** attempt, 30000),
   });
 }
